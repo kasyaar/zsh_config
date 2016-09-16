@@ -33,19 +33,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:$HOME/apps/sbt/bin:$HOME/local/bin
+source $HOME/.cargo/env
 
-# Customize to your needs...
-# PATH=$PATH:$HOME/.rvm/bin:$HOME/local/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-export PATH=$HOME/.rvm/gems/ruby-1.9.3-p547/bin:$HOME/.rvm/gems/ruby-1.9.3-p547@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p547/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.2:/usr/games/bi:n:$HOME/bin:$HOME/.rvm/bin:/usr/games/bin:$PATH
-
-export `gnome-keyring-daemon --start`
-
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+export HOMEBREW_GITHUB_API_TOKEN="f5a88b81e2d0f597420b249a6301178acf0e7ad8"
