@@ -37,4 +37,4 @@ source $HOME/.cargo/env
 
 
 export EDITOR=vim
-export HOMEBREW_GITHUB_API_TOKEN="f5a88b81e2d0f597420b249a6301178acf0e7ad8"
+source $HOME/.brew_token
