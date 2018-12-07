@@ -1,0 +1,17 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[user]
+	name = Dmitry Kasimtsev
+	email = kasyaar@gmail.com
+[alias]
+	br = branch
+	st = status
+	co = checkout
+	ci = commit
+	a = add
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
