@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo apt-get install zsh vim git
+sudo apt-get -y install zsh vim git
 git clone https://github.com/kasyaar/oh-my-zsh .zsh
 ln -s ~/.zsh/zshrc .zshrc
 ln -s ~/.zsh/.gitconfig .gitconfig
