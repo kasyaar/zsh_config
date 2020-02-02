@@ -36,3 +36,4 @@ source $HOME/.cargo/env
 
 
 export EDITOR=vim
+alias tmux="TERM=screen-256color-bce tmux"
