@@ -9,6 +9,7 @@ ZSH_THEME="kparty"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias g=git
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -28,7 +29,7 @@ ZSH_THEME="kparty"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git, ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:$HOME/apps/sbt/bin:$HOME/local/bin
@@ -36,4 +37,3 @@ source $HOME/.cargo/env
 
 
 export EDITOR=vim
-alias tmux="TERM=screen-256color-bce tmux"
