@@ -37,3 +37,12 @@ source $HOME/.cargo/env
 
 
 export EDITOR=vim
+alias ffp="ffprobe -hide_banner"
+alias ffm="ffmpeg -hide_banner"
+tmuxs() {
+    if [[ $(tmux ls -F#S |grep ^$1$)  ]]; then
+        tmux attach -t $1 
+    else
+        tmux start \; source-file ~/.zsh/.tmux.d/$1
+    fi
+}
