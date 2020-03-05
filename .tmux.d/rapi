@@ -1,8 +1,0 @@
-start-server
-new -A -s rapi -c ~/shared/workspace/radioapi -n vim "vim +NERDTreeToggle" 
-split -h "lein repl"
-split -v
-neww -n mc mc
-select-window -t :=0
-select-pane -t 0
-resize-pane -Z
