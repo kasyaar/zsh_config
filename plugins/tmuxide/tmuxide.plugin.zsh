@@ -1,17 +1,14 @@
 tide() {
-	if [ -z "$1" ];then
-        tmux new -A -s choose \; choose-tree -Zs
+    if [ -z "$1" ]; then
+        tmux new -A -s choose \; choose-tree -s
     else
-        if [[ $(tmux ls -F#S | grep ^$1$) ]];then
-            tmux attach -t $1
+        project_path="`readlink -f $1`/"
+        if [ -z "$2" ]; then
+            #no session name specified
+            session_name="`basename $project_path`"
         else
-            if [ -z "$2" ];then
-                echo "Path to project is not specified."
-            else
-                prj_path="`readlink -f $2`/"
-                echo  "$prj_path.tide"
-               tmux new -A -s $1 -c $prj_path -n "Editor" "vim +NERDTreeToggle" \; source-file "$prj_path/.tide"
-            fi
+            session_name=$2
         fi
+        tmux new -A -s $session_name -c $project_path -n "Editor" "vim +NERDTreeToggle" \; source-file "$project_path/.tide"
     fi
 }
