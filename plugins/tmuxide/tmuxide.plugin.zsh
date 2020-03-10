@@ -8,7 +8,9 @@ tide() {
             if [ -z "$2" ];then
                 echo "Path to project is not specified."
             else
-                tmux new -A -s $1 -c $2 -n "Editor" "vim +NERDTreeToggle" \; source-file "$2/.tide"
+                prj_path="`readlink -f $2`/"
+                echo  "$prj_path.tide"
+               tmux new -A -s $1 -c $prj_path -n "Editor" "vim +NERDTreeToggle" \; source-file "$prj_path/.tide"
             fi
         fi
     fi
