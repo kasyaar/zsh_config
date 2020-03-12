@@ -8,5 +8,5 @@ sudo chsh -s /usr/bin/zsh kasyaar
 
 git clone https://github.com/kasyaar/vim_config .vim
 ln -s ~/.vim/vimrc .vimhrc
-vim -c ":PlugInstall :qall"
+vim +PlugInstall +qall
 
