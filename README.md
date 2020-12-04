@@ -3,14 +3,11 @@
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/alpine_install.sh | sh
 ```
+## Debian Linux Installation
 ```shell
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/prepare.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/debian_install.sh | sh
+```
 
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/instenvo.sh | sh
-
-git clone https://github.com/kasyaar/oh-my-zsh .zsh
-sh .zsh/prepare.sh <USER>
-sh .zsh/instenvo.sh```
 <p align="center">
   <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png" alt="Oh My Zsh">
 </p>
