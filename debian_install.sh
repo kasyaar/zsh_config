@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 apt-get update
-apt-get -y install  curl zsh vim git tmux
+apt-get -y install  curl zsh vim git tmux mc
 git clone https://github.com/kasyaar/oh-my-zsh .zsh
 ln -s ~/.zsh/zshrc .zshrc
 ln -s ~/.zsh/.tmux.conf ~/.tmux.conf
