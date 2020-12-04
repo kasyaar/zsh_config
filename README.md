@@ -1,4 +1,8 @@
 # Install
+## Alpine Linux Installation
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/alpine_install.sh | sh
+```
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/prepare.sh | sh
 
