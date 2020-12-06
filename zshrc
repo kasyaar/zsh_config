@@ -33,7 +33,7 @@ plugins=(git ssh-agent sudo tmux tmuxide)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:$HOME/apps/sbt/bin:$HOME/local/bin
-source $HOME/.cargo/env
+#source $HOME/.cargo/env
 
 
 export EDITOR=vim
