@@ -30,7 +30,7 @@ alias g=git
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git ssh-agent sudo tmux tmuxide)
-plugins=(ssh-agent)
+plugins=(ssh-agent sudo)
 
 source $ZSH/oh-my-zsh.sh
 # export PATH=$PATH:$HOME/bin:$HOME/apps/sbt/bin:$HOME/local/bin
