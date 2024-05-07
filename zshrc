@@ -30,11 +30,11 @@ alias g=git
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git ssh-agent sudo tmux tmuxide)
-plugins=(ssh-agent sudo)
+plugins=(ssh-agent sudo tmux python)
 
 source $ZSH/oh-my-zsh.sh
-# export PATH=$PATH:$HOME/bin:$HOME/apps/sbt/bin:$HOME/local/bin
-source $HOME/.cargo/env
+export PATH=$PATH:$HOME/bin
+# source $HOME/.cargo/env
 
 export EDITOR=vim
 #alias ffp="ffprobe -hide_banner"
