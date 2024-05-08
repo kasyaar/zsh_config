@@ -39,3 +39,6 @@ export PATH=$PATH:$HOME/bin
 export EDITOR=vim
 #alias ffp="ffprobe -hide_banner"
 #alias ffm="ffmpeg -hide_banner"
+
+
+[[ -x "$(command -v gvim-huge)" ]] && alias gvim=gvim-huge
