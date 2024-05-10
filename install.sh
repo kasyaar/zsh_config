@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 # Declare the associative array
 declare -A distscmd
 dists=("debian" "void")
