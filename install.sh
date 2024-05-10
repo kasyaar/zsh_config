@@ -1,7 +1,7 @@
 #!/bin/bash
 # Declare the associative array
 declare -A distscmd
-dists=("debian" "void")
+dists=("debian" "void" "alpine")
 
 
 # Add commands for Debian
@@ -12,6 +12,9 @@ distscmd["debian",1]="apt install -y curl zsh vim git tmux mc"
 distscmd["void",0]="xbps-install -Syu "
 distscmd["void",1]="xbps-install -y curl zsh zsh-completions vim-huge-python3 git tmux mc"
 
+# Add commands for Alpine Linux
+distscmd["void",0]="apk update"
+distscmd["void",1]="apk add curl zsh zsh-completions vim git tmux mc"
 
 choose_dist() {
     i=1
