@@ -1,12 +1,8 @@
-# Install
-## Alpine Linux Installation
-```shell
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/alpine_install.sh | sh
+## Linux Installation (Debian, Void, Alpine)
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/install.sh | sh
 ```
-## Debian Linux Installation
-```shell
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/debian_install.sh | sh
-```
+
 <p align="center"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
 
 Oh My Zsh is an open source, community-driven framework for managing your [zsh](https://www.zsh.org/) configuration.
