@@ -36,6 +36,10 @@ echo_cmd "$UPDATE"
 $UPDATE
 echo_cmd "$INSTALL"
 $INSTALL
+if ! dialog --title "Continue" --yesno "All packages are installed. Do you want to continue with configuring zsh and vim?" 0 0; then
+  echo "Exiting..."
+  exit 0
+fi
 echo_cmd "Set zsh to default shell"
 chsh -s $(which zsh) $USER
 echo_cmd "Creating .ssh dir"
