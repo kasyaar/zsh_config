@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
-echo "Installing vim_config"
+echo "Installing zsh_config"
 if command -v git > /dev/null 2>&1; then
     echo "Clonning https://github.com/kasyaar/zsh_config.git to .zsh..."
     git clone https://github.com/kasyaar/zsh_config.git ~/.zsh > /dev/null 2>&1
-    ln -sf ~/.vim/.zshrch ~/ > /dev/null 2>&1
-    #ln -sf ~/.zsh/.tmux.conf ~/ > /dev/null 2>&1
-    ln -sf ~/.zsh/.gitconfig ~/ > /dev/null 2>&1
 else
     echo "GIT is not installed. Getting code archive."
     if command -v unzip  > /dev/null 2>&1; then
@@ -28,7 +25,7 @@ ln -sf ~/.zsh/.gitconfig ~/ > /dev/null 2>&1
 if command -v zsh > /dev/null 2>&1; then
     echo "Creating .ssh dir"
     [ -d ~/.ssh ] || mkdir ~/.ssh
-    echo "Set zsh to default shell"
+    #echo "Set zsh to default shell"
     #[ command -v chsh  > /dev/null 2>&1 ] && chsh -s $(which zsh) || echo 'chsh unavailable.'
     chmod go-w ~/.zsh ~/.zsh/custom ~/.zsh/cache
     echo "Done"
