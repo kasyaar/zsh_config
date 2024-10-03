@@ -39,8 +39,13 @@ function _omz_git_prompt_info() {
   echo "${ZSH_THEME_GIT_PROMPT_PREFIX}${ref:gs/%/%%}${upstream:gs/%/%%}$(parse_git_dirty)${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 }
 
-# Use async version if setting is enabled or undefined
-if zstyle -T ':omz:alpha:lib:git' async-prompt; then
+# Use async version if setting is enabled, or unset but zsh version is at least 5.0.6.
+# This avoids async prompt issues caused by previous zsh versions:
+# - https://github.com/ohmyzsh/ohmyzsh/issues/12331
+# - https://github.com/ohmyzsh/ohmyzsh/issues/12360
+# TODO(2024-06-12): @mcornella remove workaround when CentOS 7 reaches EOL
+if zstyle -t ':omz:alpha:lib:git' async-prompt \
+  || { is-at-least 5.0.6 && zstyle -T ':omz:alpha:lib:git' async-prompt }; then
   function git_prompt_info() {
     if [[ -n "${_OMZ_ASYNC_OUTPUT[_omz_git_prompt_info]}" ]]; then
       echo -n "${_OMZ_ASYNC_OUTPUT[_omz_git_prompt_info]}"
@@ -157,6 +162,18 @@ function git_current_branch() {
   echo ${ref#refs/heads/}
 }
 
+# Outputs the name of the previously checked out branch
+# Usage example: git pull origin $(git_previous_branch)
+# rev-parse --symbolic-full-name @{-1} only prints if it is a branch
+function git_previous_branch() {
+  local ref
+  ref=$(__git_prompt_git rev-parse --quiet --symbolic-full-name @{-1} 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]] || [[ -z $ref ]]; then
+    return  # no git repo or non-branch previous ref
+  fi
+  echo ${ref#refs/heads/}
+}
 
 # Gets the number of commits ahead from remote
 function git_commits_ahead() {
@@ -222,7 +239,7 @@ function _omz_git_prompt_status() {
   prefix_constant_map=(
     '\?\? '     'UNTRACKED'
     'A  '       'ADDED'
-    'M  '       'ADDED'
+    'M  '       'MODIFIED'
     'MM '       'MODIFIED'
     ' M '       'MODIFIED'
     'AM '       'MODIFIED'

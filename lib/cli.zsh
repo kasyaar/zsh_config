@@ -241,10 +241,18 @@ function _omz::plugin::disable {
 
   # Remove plugins substitution awk script
   local awk_subst_plugins="\
-  gsub(/[ \t]+(${(j:|:)dis_plugins})/, \"\") # with spaces before
-  gsub(/(${(j:|:)dis_plugins})[ \t]+/, \"\") # with spaces after
-  gsub(/\((${(j:|:)dis_plugins})\)/, \"\") # without spaces (only plugin)
+  gsub(/[ \t]+(${(j:|:)dis_plugins})[ \t]+/, \" \") # with spaces before or after
+  gsub(/[ \t]+(${(j:|:)dis_plugins})$/, \"\")       # with spaces before and EOL
+  gsub(/^(${(j:|:)dis_plugins})[ \t]+/, \"\")       # with BOL and spaces after
+
+  gsub(/\((${(j:|:)dis_plugins})[ \t]+/, \"(\")     # with parenthesis before and spaces after
+  gsub(/[ \t]+(${(j:|:)dis_plugins})\)/, \")\")     # with spaces before or parenthesis after
+  gsub(/\((${(j:|:)dis_plugins})\)/, \"()\")        # with only parentheses
+
+  gsub(/^(${(j:|:)dis_plugins})\)/, \")\")          # with BOL and closing parenthesis
+  gsub(/\((${(j:|:)dis_plugins})$/, \"(\")          # with opening parenthesis and EOL
 "
+
   # Disable plugins awk script
   local awk_script="
 # if plugins=() is in oneline form, substitute disabled plugins and go to next line
@@ -389,8 +397,23 @@ function _omz::plugin::info {
   local readme
   for readme in "$ZSH_CUSTOM/plugins/$1/README.md" "$ZSH/plugins/$1/README.md"; do
     if [[ -f "$readme" ]]; then
-      (( ${+commands[less]} )) && less "$readme" || cat "$readme"
-      return 0
+      # If being piped, just cat the README
+      if [[ ! -t 1 ]]; then
+        cat "$readme"
+        return $?
+      fi
+
+      # Enrich the README display depending on the tools we have
+      # - glow: https://github.com/charmbracelet/glow
+      # - bat: https://github.com/sharkdp/bat
+      # - less: typical pager command
+      case 1 in
+        ${+commands[glow]}) glow -p "$readme" ;;
+        ${+commands[bat]}) bat -l md --style plain "$readme" ;;
+        ${+commands[less]}) less "$readme" ;;
+        *) cat "$readme" ;;
+      esac
+      return $?
     fi
   done
 
