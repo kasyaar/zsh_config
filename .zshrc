@@ -37,12 +37,16 @@ export PATH=$PATH:$HOME/bin
 # source $HOME/.cargo/env
 
 export EDITOR=vim
-#alias ffp="ffprobe -hide_banner"
-#alias ffm="ffmpeg -hide_banner"
 
-
+# for voidlinux
 [[ -x "$(command -v gvim-huge)" ]] && alias gvim=gvim-huge
-keep_current_path() {
-  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
-}
-precmd_functions+=(keep_current_path)
+
+# for windows wsl
+if [[ -n $(command -v wslpath) ]]; then
+	WSL_DISTRO_NAME=$(wslpath -m / | awk -F/ '{print $4}')
+	PROMPT="$WSL_DISTRO_NAME:$PROMPT"
+	keep_current_path() {
+	  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+	}
+	precmd_functions+=(keep_current_path)
+fi	
