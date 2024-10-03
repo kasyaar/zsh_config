@@ -30,7 +30,7 @@ alias g=git
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git ssh-agent sudo tmux tmuxide)
-plugins=(ssh-agent sudo tmux python)
+plugins=(ssh-agent sudo tmux python git docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin
@@ -42,3 +42,7 @@ export EDITOR=vim
 
 
 [[ -x "$(command -v gvim-huge)" ]] && alias gvim=gvim-huge
+keep_current_path() {
+  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+}
+precmd_functions+=(keep_current_path)
