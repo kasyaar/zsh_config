@@ -15,7 +15,7 @@ alias g=git
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -30,7 +30,13 @@ alias g=git
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git ssh-agent sudo tmux tmuxide)
-plugins=(ssh-agent sudo tmux python git docker docker-compose)
+plugins=()
+[[ -n $(command -v ssh-agent) ]] && plugins+=(ssh-agent)
+[[ -n $(command -v git) ]] && plugins+=(git)
+[[ -n $(command -v tmux) ]] && plugins+=(tmux)
+[[ -n $(command -v python) ]] && plugins+=(python)
+[[ -n $(command -v sudo) ]] && plugins+=(sudo)
+[[ -n $(command -v docker) ]] && plugins+=(docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin

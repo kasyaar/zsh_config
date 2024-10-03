@@ -1,6 +1,7 @@
-## Linux Installation (Debian, Void, Alpine)
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/kasyaar/oh-my-zsh/master/install.sh | bash
+## Installing using script
+```sh
+curl -sSL https://raw.githubusercontent.com/kasyaar/zsh_config/master/install.sh | sh
+
 ```
 
 <p align="center"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
