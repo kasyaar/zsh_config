@@ -44,7 +44,6 @@ export EDITOR=vim
 # for windows wsl
 if [[ -n $(command -v wslpath) ]]; then
 	WSL_DISTRO_NAME=$(wslpath -m / | awk -F/ '{print $4}')
-	PROMPT="$WSL_DISTRO_NAME:$PROMPT"
 	keep_current_path() {
 	  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
 	}
