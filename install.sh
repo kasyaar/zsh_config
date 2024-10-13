@@ -1,5 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 echo "Installing zsh_config"
+echo "Baking up old .zsh folder"
+mv ~/.zsh ~/.zsh.$(date +%Y%m%d-%H%M%S) > /dev/null 2>&1
 if command -v git > /dev/null 2>&1; then
     echo "Clonning https://github.com/kasyaar/zsh_config.git to .zsh..."
     git clone https://github.com/kasyaar/zsh_config.git ~/.zsh > /dev/null 2>&1
