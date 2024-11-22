@@ -55,7 +55,7 @@ if command -v zsh > /dev/null 2>&1; then
   #[ command -v chsh  > /dev/null 2>&1 ] && chsh -s $(which zsh) || echo 'chsh unavailable.'
   chmod go-w ~/.zsh ~/.zsh/custom ~/.zsh/cache
   echo "Done"
-  echo "Run this command to make zsh your default shell: chsh -s $(which zsh)"
+  echo 'Run this command to make zsh your default shell: chsh -s $(which zsh)'
 else
   echo "ZSH is not installed. Please install and run again."
   exit
