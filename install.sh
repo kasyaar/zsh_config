@@ -42,7 +42,8 @@ else
 fi
 echo "Installing fonts"
 mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf > /dev/null 2<&1
+cd ~/.local/share/fonts
+curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf > /dev/null 2<&1
 echo "Creating symlinks..."
 ln -sf ~/.zsh/.zshrc ~/ > /dev/null 2>&1
 ln -sf ~/.zsh/.tmux.conf ~/ > /dev/null 2>&1
