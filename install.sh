@@ -60,4 +60,3 @@ else
   echo "ZSH is not installed. Please install and run again."
   exit
 fi
-# TODO: add powerlevel10k installation steps
