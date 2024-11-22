@@ -3,6 +3,17 @@
 curl -sSL https://raw.githubusercontent.com/kasyaar/zsh_config/master/install.sh | sh
 
 ```
+## Installing fonts
+Windows PowerShell 
+```
+& ([scriptblock]::Create((iwr 'https://to.loredo.me/Install-NerdFont.ps1'))) -Name hack, heavy-data
+```
+Linux
+```
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
+```
+
 
 <p align="center"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
 
