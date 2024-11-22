@@ -3,7 +3,7 @@ missing=""
 commands="unzip curl zsh"
 set -- $commands
 for command; do
-  command -v "$command" &> /dev/null || { echo "Error: $command not found"; missing="$missing $command"; }
+  command -v "$command" > /dev/null 2>&1 || { echo "Error: $command not found"; missing="$missing $command"; }
 done
 
 if [ -z "$missing" ]; then
@@ -40,6 +40,7 @@ else
     exit
   fi
 fi
+echo "Installing fonts"
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
 echo "Creating symlinks..."
