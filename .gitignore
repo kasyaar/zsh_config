@@ -11,3 +11,6 @@ environment-*
 # editor configs
 .vscode
 .idea
+
+# zcompile cached files
+*.zwc
