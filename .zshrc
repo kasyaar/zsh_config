@@ -40,29 +40,18 @@ DISABLE_AUTO_UPDATE="true"
 #plugins=(git ssh-agent sudo tmux tmuxide)
 plugins=()
 [[ -n $(command -v ssh-agent) ]] && plugins+=(ssh-agent)
-[[ -n $(command -v git) ]] && plugins+=(git)
 [[ -n $(command -v tmux) ]] && plugins+=(tmux)
-[[ -n $(command -v python) ]] && plugins+=(python)
 [[ -n $(command -v sudo) ]] && plugins+=(sudo)
-[[ -n $(command -v docker) ]] && plugins+=(docker docker-compose)
+[[ -n $(command -v git) ]] && plugins+=(git)
+[[ -n $(command -v jj) ]] && plugins+=(jj)
+[[ -n $(command -v python) ]] && plugins+=(python)
+[[ -n $(command -v go) ]] && plugins+=(golang)
+[[ -n $(command -v cargo) ]] && plugins+=(rust) && source $HOME/.cargo/env
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 # source $HOME/.cargo/env
 
-#export EDITOR=vim
-
-# for voidlinux
-[[ -x "$(command -v gvim-huge)" ]] && alias gvim=gvim-huge
-
-# for windows wsl
-if [[ -n $(command -v wslpath) ]]; then
-	WSL_DISTRO_NAME=$(wslpath -m / | awk -F/ '{print $4}')
-	keep_current_path() {
-	  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
-	}
-	precmd_functions+=(keep_current_path)
-fi	
 # for debian/ubuntu
 [[ ! -f /etc/zsh_command_not_found ]] || source /etc/zsh_command_not_found
 
