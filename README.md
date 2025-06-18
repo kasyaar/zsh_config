@@ -1,6 +1,6 @@
 ## Installing using script
 ```sh
-curl -sSL https://raw.githubusercontent.com/kasyaar/zsh_config/master/install.sh | sh
+curl -sSL https://raw.githubusercontent.com/kasyaar/zsh_config/main/install.sh | sh
 
 ```
 ## Installing fonts

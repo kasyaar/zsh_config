@@ -23,7 +23,7 @@ else
   echo "GIT is not installed. Getting code archive."
   if command -v unzip  > /dev/null 2>&1; then
     echo "Getting kasyaar/zsh_config"
-    curl -sSL -o /tmp/zsh_config.zip  https://github.com/kasyaar/zsh_config/archive/refs/heads/master.zip
+    curl -sSL -o /tmp/zsh_config.zip  https://github.com/kasyaar/zsh_config/archive/refs/heads/main.zip
     echo "Unpackign to .zshrc"
     unzip -d ~/ /tmp/zsh_config.zip > /dev/null 2>&1 
     echo "Getting romkatv/poverlevel10k"
@@ -31,7 +31,7 @@ else
     echo "Unpackign powerlevel10k"
     unzip -d ~/ /tmp/p10k.zip > /dev/null 2>&1 
     [ -d .zsh ] && mv .zsh .zsh.orig
-    mv ~/zsh_config-master ~/.zsh
+    mv ~/zsh_config-main ~/.zsh
     rm /tmp/zsh_config.zip
     mv ~/powerlevel10k-master ~/.zsh/custom/themes/powerlevel10k
     rm /tmp/p10k.zip
