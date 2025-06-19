@@ -44,6 +44,7 @@ plugins=()
 [[ -n $(command -v sudo) ]] && plugins+=(sudo)
 [[ -n $(command -v git) ]] && plugins+=(git)
 [[ -n $(command -v jj) ]] && plugins+=(jj)
+[[ -n $(command -v uv) ]] && plugins+=(uv)
 [[ -n $(command -v python) ]] && plugins+=(python)
 [[ -n $(command -v go) ]] && plugins+=(golang)
 [[ -n $(command -v cargo) ]] && plugins+=(rust) && source $HOME/.cargo/env
