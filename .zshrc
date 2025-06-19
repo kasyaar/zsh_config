@@ -49,12 +49,13 @@ plugins=()
 [[ -n $(command -v go) ]] && plugins+=(golang)
 [[ -n $(command -v cargo) ]] && plugins+=(rust) && source $HOME/.cargo/env
 
-[[ -n $(command -v bat) ]] && alias bat="bat --color always -n" || alias bat=cat
 [[ -n $(command -v fzf) ]] && plugins+=(fzf) && \
   export FZF_DEFAULT_OPTS="--layout reverse --height 41% --border --tmux bottom,40% --preview 'bat --color always -n {}'" && \
   export FZF_CTRL_R_OPTS="--preview ''" && \
   export FZT_COMPLETION_TRIGGER="**"
+
 [[ -n $(command -v vim) ]] && export EDITOR=vim
+[[ -n $(command -v bat) ]] && alias bat="bat --color always -n" || alias bat=cat
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin
