@@ -34,6 +34,14 @@ llmCheckFile () {
   fi
 
 }
+cdf() {
+    local revision="${1:-@}"
+    jj diff -r $revision --git
+}
+cm() {
+    local revision="${1:-@}"
+    echo $(cdf $revision|llm -m $(llmSelectModel) -s "generate commit message for these changes. Return: (changes type) comment")
+}
 
 result=$(llmCheckFile $llm_models_list)
 if [[ "$result" != "file_ok" ]]; then
