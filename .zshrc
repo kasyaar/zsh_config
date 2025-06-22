@@ -47,7 +47,8 @@ plugins=()
 [[ -n $(command -v uv) ]] && plugins+=(uv)
 [[ -n $(command -v python) ]] && plugins+=(python)
 [[ -n $(command -v go) ]] && plugins+=(golang)
-[[ -n $(command -v cargo) ]] && plugins+=(rust) && source $HOME/.cargo/env
+[[ -n $(command -v cargo) ]] && plugins+=(rust)
+[[ -n $(command -v llm) ]] && plugins+=(llm)
 
 if [[ -n $(command -v fzf) ]] then;
   plugins+=(fzf) 
@@ -69,3 +70,5 @@ export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+[[ -e "$HOME/.profile" ]] && source $HOME/.profile
