@@ -1,15 +1,19 @@
 llm_models_list="$HOME/.config/io.datasette.llm/models"
+
 # Need that for debug purpose
 llmUpdateModelsFull() {
   local filename="${llm_models_list}.full"
   llm models list > "$filename"
 }
+
 llmUpdateModels() {
   llm models list |sed -E 's/^[^:]*: *([^ ]*).*/\1/' > "$llm_models_list"
 }
+
 llmSelectModel () {
   cat "$llm_models_list"|fzf --no-preview
 }
+
 llmCheckFile () {
   local filename="$1"
   if [[ -e "$filename" ]]; then
@@ -34,13 +38,17 @@ llmCheckFile () {
   fi
 
 }
-cdf() {
+
+# revision diff in git format
+revdiff() {
     local revision="${1:-@}"
     jj diff -r $revision --git
 }
-cm() {
+
+# get revision comment from llm based on diff
+revm() {
     local revision="${1:-@}"
-    echo $(cdf $revision|llm -m $(llmSelectModel) -s "generate commit message for these changes. Return: (changes type) comment")
+    echo $(revdiff $revision|llm -m $(llmSelectModel) -s "generate commit message for these changes. Return: '(change type) comment'")
 }
 
 result=$(llmCheckFile $llm_models_list)
