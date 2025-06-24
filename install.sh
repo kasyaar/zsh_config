@@ -50,7 +50,7 @@ ln -sf ~/.zsh/.tmux.conf ~/ > /dev/null 2>&1
 ln -sf ~/.zsh/.gitconfig ~/ > /dev/null 2>&1
 
 mkdir -p ~/.config/jj > /dev/null  2>&1
-ln -sf ~/.zsh/jj-config.toml ~/.config/jj/ > /dev/null 2>&1
+ln -sf ~/.zsh/jj-config.toml ~/.config/jj/config.toml > /dev/null 2>&1
 
 echo "Creating .ssh dir"
 [ -d ~/.ssh ] || mkdir ~/.ssh
