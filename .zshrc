@@ -53,7 +53,8 @@ plugins=()
 if [[ -n $(command -v fzf) ]] then;
   plugins+=(fzf) 
   [[ -n $(command -v bat) ]] && CAT="bat --color always -n" || CAT=cat
-  export FZF_DEFAULT_OPTS="--layout reverse --height 40% --border --tmux bottom,40% --preview '$CAT {}'"
+  #export FZF_DEFAULT_OPTS="--layout reverse --height 40% --border --tmux bottom,40% --preview '$CAT {}' --preview-window='wrap'"
+  export FZF_DEFAULT_OPTS="--layout reverse --height 40% --border -preview '$CAT {}' --preview-window='wrap'"
   export FZF_CTRL_R_OPTS="--preview ''"
   export FZT_COMPLETION_TRIGGER="**"
 fi
