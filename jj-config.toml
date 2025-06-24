@@ -6,8 +6,9 @@ email = "kasyaar@gmail.com"
 
 [aliases]
 s = ["status", "--no-pager"]
-l = ["log", "-r", "~root()"]
+fl = ["log", "-r", "~root()"]
 d = ["describe"]
+l = ["log", "--limit", "5", "--no-pager", "-r", "~root()"]
 
 [ui]
 default-command = "s"
