@@ -1,6 +1,8 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+[[ -e "$HOME/.profile" ]] && source $HOME/.profile
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -13,7 +15,11 @@ ZSH=$HOME/.zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="kparty" 
-ZSH_THEME="powerlevel10k/powerlevel10k" 
+if [[ -z "$DISABLE_POWERLINE" ]]; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+    ZSH_THEME="minimal"
+fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -68,7 +74,8 @@ export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+if [[ -z "$DISABLE_POWERLINE" ]]; then
+    [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
+    typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+fi
 
-[[ -e "$HOME/.profile" ]] && source $HOME/.profile

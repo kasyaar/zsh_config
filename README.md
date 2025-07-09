@@ -13,6 +13,16 @@ Linux
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
 ```
+ ## Disable Powerline
+ To completely disable powerline
+```
+echo 'export DISABLE_POWERLINE=1' >> ~/.profile
+```
+if you want you can disable powerline only for specific apps. 
+Here is example to disable powerline when running `mc`
+```
+echo '[[ -n "$MC_SID" ]] && DISABLE_POWERLINE=1'
+```
 
 
 <p align="center"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
