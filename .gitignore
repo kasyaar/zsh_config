@@ -4,7 +4,12 @@ custom/
 # temp files directories
 cache/
 log/
+
+# Vim swap/backup files
 *.swp
+*.swo
+
+# macOS system files
 .DS_Store
 environment-*
 
@@ -14,3 +19,4 @@ environment-*
 
 # zcompile cached files
 *.zwc
+*.zwc.old
