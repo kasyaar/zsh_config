@@ -1,9 +1,9 @@
-# OPENSPEC:START
+# OPENSPEC,HERDR:START
 # OpenSpec shell completions configuration
 fpath=("/home/kasyaar/.zsh/completions" $fpath)
 autoload -Uz compinit
 compinit
-# OPENSPEC:END
+# OPENSPEC,HERDR:END
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
