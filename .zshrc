@@ -1,18 +1,16 @@
-# OPENSPEC,HERDR:START
-# OpenSpec shell completions configuration
-fpath=("/home/kasyaar/.zsh/completions" $fpath)
-autoload -Uz compinit
-compinit
-# OPENSPEC,HERDR:END
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 [[ -e "$HOME/.profile" ]] && source $HOME/.profile
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -z "$DISABLE_POWERLINE" && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# OPENSPEC,HERDR:START
+# OpenSpec shell completions configuration
+fpath=("$HOME/.zsh/completions" $fpath)
+# OPENSPEC,HERDR:END
+
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.zsh
@@ -22,6 +20,7 @@ ZSH=$HOME/.zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="kparty" 
+
 if [[ -z "$DISABLE_POWERLINE" ]]; then
     ZSH_THEME="powerlevel10k/powerlevel10k"
 else
@@ -30,7 +29,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias g=git
+# alias g=git
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -51,38 +50,38 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git ssh-agent sudo tmux tmuxide)
-plugins=()
-[[ -n $(command -v ssh-agent) ]] && plugins+=(ssh-agent)
-[[ -n $(command -v tmux) ]] && plugins+=(tmux)
-[[ -n $(command -v sudo) ]] && plugins+=(sudo)
-[[ -n $(command -v git) ]] && plugins+=(git)
-[[ -n $(command -v jj) ]] && plugins+=(jj)
-[[ -n $(command -v uv) ]] && plugins+=(uv)
-[[ -n $(command -v python) ]] && plugins+=(python)
-[[ -n $(command -v go) ]] && plugins+=(golang)
-[[ -n $(command -v cargo) ]] && plugins+=(rust)
-[[ -n $(command -v llm) ]] && plugins+=(llm)
 
-if [[ -n $(command -v fzf) ]] then;
-  plugins+=(fzf) 
-  [[ -n $(command -v bat) ]] && CAT="bat --color always -n" || CAT=cat
-  #export FZF_DEFAULT_OPTS="--layout reverse --height 40% --border --tmux bottom,40% --preview '$CAT {}' --preview-window='wrap'"
+typeset -U path PATH
+path=($path $HOME/bin $HOME/.local/bin)
+export PATH
+
+plugins=()
+(( $+commands[ssh-agent] )) && plugins+=(ssh-agent)
+(( $+commands[tmux] ))      && plugins+=(tmux)
+(( $+commands[sudo] ))      && plugins+=(sudo)
+(( $+commands[git] ))       && plugins+=(git)
+(( $+commands[jj] ))        && plugins+=(jj)
+(( $+commands[uv] ))        && plugins+=(uv)
+(( $+commands[python] ))    && plugins+=(python)
+(( $+commands[go] ))        && plugins+=(golang)
+(( $+commands[cargo] ))     && plugins+=(rust)
+(( $+commands[llm] ))       && plugins+=(llm)
+
+if (( $+commands[fzf] )); then
+  plugins+=(fzf)
+  (( $+commands[bat] )) && CAT="bat --color always -n" || CAT="cat"
   export FZF_DEFAULT_OPTS="--layout reverse --height 40% --border --preview '$CAT {}' --preview-window='wrap'"
-  export FZF_CTRL_R_OPTS="--preview 'man {2}'" 
+  export FZF_CTRL_R_OPTS="--preview 'man {2}'"
 fi
 
-[[ -n $(command -v vim) ]] && export EDITOR=vim
+#[[ -n $(command -v vim) ]] && export EDITOR=vim
+(( $+commands[vim] )) && export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 
 # for debian/ubuntu
-[[ ! -f /etc/zsh_command_not_found ]] || source /etc/zsh_command_not_found
+[[ -r /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ -z "$DISABLE_POWERLINE" ]]; then
-    [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
-    typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-fi
-
+[[ -z "$DISABLE_POWERLINE" && -r ~/.zsh/p10k.zsh ]] && source ~/.zsh/p10k.zsh
