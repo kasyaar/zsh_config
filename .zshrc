@@ -66,6 +66,7 @@ plugins=()
 (( $+commands[go] ))        && plugins+=(golang)
 (( $+commands[cargo] ))     && plugins+=(rust)
 (( $+commands[llm] ))       && plugins+=(llm)
+(( $+commands[herdr] ))       && plugins+=(herdr)
 
 if (( $+commands[fzf] )); then
   plugins+=(fzf)
@@ -78,6 +79,8 @@ fi
 (( $+commands[vim] )) && export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
+
+(( $+functions[zsh_post_init] )) && zsh_post_init
 
 # for debian/ubuntu
 [[ -r /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
