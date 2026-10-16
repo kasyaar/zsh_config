@@ -3,7 +3,6 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 [[ -e "$HOME/.profile" ]] && source $HOME/.profile
 if [[ -z "$DISABLE_POWERLINE" && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # OPENSPEC,HERDR:START
@@ -88,3 +87,4 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -z "$DISABLE_POWERLINE" && -r ~/.zsh/p10k.zsh ]] && source ~/.zsh/p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
